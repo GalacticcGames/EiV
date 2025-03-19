@@ -31,4 +31,4 @@ what we do. We hope to see you there!
 ◿ Since this plugin is hosted on GitHub, go check out the EiV GitHub repo for any changes
 
 
-\text{\color{red}Red}
+$\textsf{\color{orange}{Your Text}}$
