@@ -95,7 +95,17 @@ Here is a list of EiV macros to declare before an include and what they do:
 | `#define EIV_INCLUDE_QR`                    | Includes the Eigen QR module          |
 | `#define EIV_INCLUDE_SVD`                   | Includes the Eigen SVD module         |
 | `#define EIV_INCLUDE_EIGENVALUES`           | Includes the Eigen Eigenvalues module |
-| `#define EIV_INCLUDE_DENSE_LINEAR_PROBLEMS` | Includes the Above five modules       |
+| `#define EIV_INCLUDE_DENSE_LINEAR_PROBLEMS` | Includes the Above Five modules       |
+| `#define EIV_INCLUDE_SPARSECORE`     | Includes the Eigen Sparse Core module        |
+| `#define EIV_INCLUDE_ORDERINGMETHODS`     | Includes the Eigen Ordering Methods module |
+| `#define EIV_INCLUDE_SPARSECHOLESKY`     | Includes the Eigen Sparse Cholesky module |
+| `#define EIV_INCLUDE_SPARSELU`     | Includes the Eigen Sparse LU module |
+| `#define EIV_INCLUDE_SPARSEQR`     | Includes the Eigen Sparse QR module |
+| `#define EIV_INCLUDE_ITERATIVELINEARSOLVERS`     | Includes the Eigen Iterative Linear Solvers module |
+| `#define EIV_INCLUDE_SPARSE_LINEAR_ALGEBRA`     | Includes the Above Five modules |
+| `#define EIV_INCLUDE_GEOMETRY`     | Includes the Eigen Geometry module |
+| `#define EIV_NO_UTILITY`     | This macro removes any extra utility provided by EiV and only adds the Eigen modules |
+| `#define EIV_UNDEFINE_INCLUDES`     | This macro undefines all of the above macros after EiV is included in the file |
 
 
 
