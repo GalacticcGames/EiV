@@ -86,24 +86,24 @@ Here is a list of EiV macros to declare before an include and what they do:
 
 | EiV Macro Definition                        | Effect On Include                     |
 | ------------------------------------------- | ------------------------------------- |
-| `#define EIV_INCLUDE_CORE`                  | Includes the Eigen Core module        |
-| `#define EIV_INCLUDE_JACOBI`                | Includes the Eigen Jacobi module      |
-| `#define EIV_INCLUDE_HOUSEHOLDER`           | Includes the Eigen Householder module |
-| `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY`    | Includes the Core, Jacobi, and Householder modules      |
-| `#define EIV_INCLUDE_CHOLESKY`              | Includes the Eigen Cholesky module    |
-| `#define EIV_INCLUDE_LU`                    | Includes the Eigen LU module          |
-| `#define EIV_INCLUDE_QR`                    | Includes the Eigen QR module          |
-| `#define EIV_INCLUDE_SVD`                   | Includes the Eigen SVD module         |
-| `#define EIV_INCLUDE_EIGENVALUES`           | Includes the Eigen Eigenvalues module |
-| `#define EIV_INCLUDE_DENSE_LINEAR_PROBLEMS` | Includes the Cholesky, LU, QR, SVD, and Eigenvalues modules       |
-| `#define EIV_INCLUDE_SPARSECORE`     | Includes the Eigen Sparse Core module        |
-| `#define EIV_INCLUDE_ORDERINGMETHODS`     | Includes the Eigen Ordering Methods module |
-| `#define EIV_INCLUDE_SPARSECHOLESKY`     | Includes the Eigen Sparse Cholesky module |
-| `#define EIV_INCLUDE_SPARSELU`     | Includes the Eigen Sparse LU module |
-| `#define EIV_INCLUDE_SPARSEQR`     | Includes the Eigen Sparse QR module |
-| `#define EIV_INCLUDE_ITERATIVELINEARSOLVERS`     | Includes the Eigen Iterative Linear Solvers module |
-| `#define EIV_INCLUDE_SPARSE_LINEAR_ALGEBRA`     | Includes the Sparse Core, Choleksy LU, and QR modules and the Iterative Linear Solvers module |
-| `#define EIV_INCLUDE_GEOMETRY`     | Includes the Eigen Geometry module |
+| `#define EIV_INCLUDE_CORE`                  | Includes the Eigen [Core](https://eigen.tuxfamily.org/dox/group__Core__Module.html) module        |
+| `#define EIV_INCLUDE_JACOBI`                | Includes the Eigen [Jacobi](https://eigen.tuxfamily.org/dox/group__Jacobi__Module.html) module      |
+| `#define EIV_INCLUDE_HOUSEHOLDER`           | Includes the Eigen [Householder](https://eigen.tuxfamily.org/dox/group__Householder__Module.html) module |
+| `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY`    | Includes the [Core](https://eigen.tuxfamily.org/dox/group__Core__Module.html), [Jacobi](https://eigen.tuxfamily.org/dox/group__Jacobi__Module.html), and [Householder](https://eigen.tuxfamily.org/dox/group__Householder__Module.html) modules      |
+| `#define EIV_INCLUDE_CHOLESKY`              | Includes the Eigen [Cholesky](https://eigen.tuxfamily.org/dox/group__Cholesky__Module.html) module    |
+| `#define EIV_INCLUDE_LU`                    | Includes the Eigen [LU](https://eigen.tuxfamily.org/dox/group__LU__Module.html) module          |
+| `#define EIV_INCLUDE_QR`                    | Includes the Eigen [QR](https://eigen.tuxfamily.org/dox/group__QR__Module.html) module          |
+| `#define EIV_INCLUDE_SVD`                   | Includes the Eigen [SVD](https://eigen.tuxfamily.org/dox/group__SVD__Module.html) module         |
+| `#define EIV_INCLUDE_EIGENVALUES`           | Includes the Eigen [Eigenvalues](https://eigen.tuxfamily.org/dox/group__Eigenvalues__Module.html) module |
+| `#define EIV_INCLUDE_DENSE_LINEAR_PROBLEMS` | Includes the [Cholesky](https://eigen.tuxfamily.org/dox/group__Cholesky__Module.html), [LU](https://eigen.tuxfamily.org/dox/group__LU__Module.html), [QR](https://eigen.tuxfamily.org/dox/group__QR__Module.html), [SVD](https://eigen.tuxfamily.org/dox/group__SVD__Module.html), and [Eigenvalues](https://eigen.tuxfamily.org/dox/group__Eigenvalues__Module.html) modules       |
+| `#define EIV_INCLUDE_SPARSECORE`     | Includes the Eigen [Sparse Core](https://eigen.tuxfamily.org/dox/group__SparseCore__Module.html) module        |
+| `#define EIV_INCLUDE_ORDERINGMETHODS`     | Includes the Eigen [Ordering Methods](https://eigen.tuxfamily.org/dox/group__OrderingMethods__Module.html) module |
+| `#define EIV_INCLUDE_SPARSECHOLESKY`     | Includes the Eigen [Sparse Cholesky](https://eigen.tuxfamily.org/dox/group__SparseCholesky__Module.html) module |
+| `#define EIV_INCLUDE_SPARSELU`     | Includes the Eigen [Sparse LU](https://eigen.tuxfamily.org/dox/group__SparseLU__Module.html) module |
+| `#define EIV_INCLUDE_SPARSEQR`     | Includes the Eigen [Sparse QR](https://eigen.tuxfamily.org/dox/group__SparseQR__Module.html) module |
+| `#define EIV_INCLUDE_ITERATIVELINEARSOLVERS`     | Includes the Eigen [Iterative Linear Solvers](https://eigen.tuxfamily.org/dox/group__IterativeLinearSolvers__Module.html) module |
+| `#define EIV_INCLUDE_SPARSE_LINEAR_ALGEBRA`     | Includes the [Sparse Core](https://eigen.tuxfamily.org/dox/group__SparseCore__Module.html), [Sparse Cholesky](https://eigen.tuxfamily.org/dox/group__SparseCholesky__Module.html) [Sparse LU](https://eigen.tuxfamily.org/dox/group__SparseLU__Module.html), and [Sparse QR](https://eigen.tuxfamily.org/dox/group__SparseQR__Module.html) modules and the [Ordering Methods](https://eigen.tuxfamily.org/dox/group__OrderingMethods__Module.html) and [Iterative Linear Solvers](https://eigen.tuxfamily.org/dox/group__IterativeLinearSolvers__Module.html) modules |
+| `#define EIV_INCLUDE_GEOMETRY`     | Includes the Eigen [Geometry](https://eigen.tuxfamily.org/dox/group__Geometry__Module.html) module |
 | `#define EIV_NO_UTILITY`     | This macro removes any extra utility provided by EiV and only adds the Eigen modules |
 | `#define EIV_UNDEFINE_INCLUDES`     | This macro undefines all of the above macros after EiV is included in the file |
 
