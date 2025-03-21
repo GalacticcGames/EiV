@@ -49,13 +49,13 @@ To begin using EiV, first either download the plugin from Fab or from the GitHub
 | 5.4                   | ✅ Available on Fab |
 | 5.5                   | ✅ Available on Fab |
 
-| Platform | Supported |
+| Platform | Officially Supported |
 | -------- | --------- |
 | Windows (32/64 bit) | ✅ Yes |
-| Mac | ✅ Yes |
-| iOS | ❌ No |
-| Android | ❌ No |
-| Linux | ✅ Yes |
+| Mac                 | ❌ No  |
+| iOS                 | ❌ No  |
+| Android             | ❌ No  |
+| Linux               | ✅ Yes |
 
 Any platform not supported currently can be supported with some changes in `EiVLibrary.h`. If you want to suggest changes that can be made to allow EiV to support these platforms feel free to do so!
 
