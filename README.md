@@ -82,10 +82,11 @@ What this include pattern does is it allows you to define macros that represent 
 What the undefinition of these macros allows for is letting you access Eigen in another file within this module you are working in while not necessarily including anything you accessed in any other file, thus allowing for enhanced IWYU *(Include What You Use)* formatting and procedure. See more on Unreal Engine's take on IWYU [here](https://dev.epicgames.com/documentation/en-us/unreal-engine/include-what-you-use-iwyu-for-unreal-engine-programming).
 
 Here is a list of EiV macros to declare before an include and what they do:
-| EiV Macro Definition | Effect On Include |
-| `#define EIV_INCLUDE_CORE` | Includes the Eigen Core module |
-| `#define EIV_INCLUDE_JACOBI` | Includes the Eigen Jacobi module |
-| `#define EIV_INCLUDE_HOUSEHOLDER` | Includes the Eigen Householder module |
+
+| EiV Macro Definition                     | Effect On Include |
+| `#define EIV_INCLUDE_CORE`               | Includes the Eigen Core module |
+| `#define EIV_INCLUDE_JACOBI`             | Includes the Eigen Jacobi module |
+| `#define EIV_INCLUDE_HOUSEHOLDER`        | Includes the Eigen Householder module |
 | `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` | Includes the Above Three modules |
 
 
