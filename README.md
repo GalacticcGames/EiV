@@ -132,4 +132,5 @@ Once EiV is all included, you can just start coding using the usual C++, Unreal 
 
 ##### $\textsf{\color{#5ec3d5}{5ec3d5}}$
 
-*${\large\textsf{\color{#5ec3d5}{text}}}$* in a normal sentence
+${\large\textsf{\color{#5ec3d5}{text}}}$ in a normal sentence
+${\large\textbf\textsf{\color{#5ec3d5}{text}}}$ in a normal sentence
