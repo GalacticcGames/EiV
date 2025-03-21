@@ -132,4 +132,4 @@ Once EiV is all included, you can just start coding using the usual C++, Unreal 
 
 ##### $\textsf{\color{#5ec3d5}{5ec3d5}}$
 
-${ \normalsize\textsf {testing} }$ in a normal sentence
+${ \normalsize\textsf{\color{#5ec3d5}{text}} }$ in a normal sentence
