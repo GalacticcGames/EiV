@@ -18,7 +18,7 @@ process otherwise the plugin may not work as intended.
 
 ## Reporting a Vulnerability
 
-As with any code that allows for you to do your own memory management, there natrually comes potential for security vulnerabilities. When working mostly within Unreal C++, much of that danger is restrained thanks to UObjects.
+As with any code that allows for you to do your own memory management, there naturally comes potential for security vulnerabilities. When working mostly within Unreal C++, much of that danger is restrained thanks to UObjects.
 However, this library allows you to access non-Unreal Engine C++ and thus expects you to understand more about safe coding practices in C++. While Eigen handles much of its own internal memory management, if you allocate memory for and maintain
 pointers to Eigen structures it is solely on you to handle them. We recommend using techniques such as [smart pointers](https://learn.microsoft.com/en-us/cpp/cpp/smart-pointers-modern-cpp?view=msvc-170)
 to help reduce issues within your program. For those that want to look more in-depth at security best practices in C++ please see the [SEI CERT C++ Coding Standard](https://wiki.sei.cmu.edu/confluence/display/cplusplus/2+Rules) 
