@@ -58,6 +58,8 @@ Using EiV in Blueprints is quite simple. It is just implemented as a Blueprint F
 
 Most EiV types are accessed via converter nodes. These nodes take what will be converted to the other type on one end and then swap that input type to the output. For example, the node below has a Matrix input and an Eigen Matrix input. Both of these inputs are reflected as outputs. When a normal matrix is input to this converter, the converter outputs the converted type from the Out Eigen Matrix pin. The pattern follows for an Eigen Matrix input - it is output from the Out Matrix pin. **Inputs do not directly carry through this node.** If a input pin is unconnected, that is no problem for EiV and it will just output the conversion of the empty type (often being 0 or some null matrix for blank inputs).
 
+![EiV Matrix Converter Node](EiVConverter.png)
+
 Once you have an Eigen/EiV type in your blueprint, you can use the EiV functions for those types. These functions are more or less a 1:1 mapping to the actual Eigen functions, so checking out the [Eigen documentation](https://eigen.tuxfamily.org/dox/) should help you understand how they work if you are unfamiliar.
 
 ### C++:
