@@ -83,11 +83,11 @@ What the undefinition of these macros allows for is letting you access Eigen in 
 
 Here is a list of EiV macros to declare before an include and what they do:
 
-| EiV Macro Definition                     | Effect On Include |
-| `#define EIV_INCLUDE_CORE`               | Includes the Eigen Core module |
-| `#define EIV_INCLUDE_JACOBI`             | Includes the Eigen Jacobi module |
+| EiV Macro Definition                     | Effect On Include                     |
+| `#define EIV_INCLUDE_CORE`               | Includes the Eigen Core module        |
+| `#define EIV_INCLUDE_JACOBI`             | Includes the Eigen Jacobi module      |
 | `#define EIV_INCLUDE_HOUSEHOLDER`        | Includes the Eigen Householder module |
-| `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` | Includes the Above Three modules |
+| `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` | Includes the Above Three modules      |
 
 
 <!-- MARKDOWN THEME -->
