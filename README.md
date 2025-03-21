@@ -37,6 +37,7 @@ what we do. We hope to see you there!
 To begin using EiV, first either download the plugin from Fab or from the GitHub repository and build it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above, however, Fab will only be guaranteed to have the latest three engine versions available. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
 
 | Unreal Engine Version | EiV Compatible |
+| --------------------- | -------------- |
 | 4.27 and below        | ❌            |
 | 5.0                   | ❌            |
 | 5.1                   | ⚠️ Build From Source |
@@ -84,6 +85,7 @@ What the undefinition of these macros allows for is letting you access Eigen in 
 Here is a list of EiV macros to declare before an include and what they do:
 
 | EiV Macro Definition                     | Effect On Include                     |
+| ---------------------------------------- | ------------------------------------- |
 | `#define EIV_INCLUDE_CORE`               | Includes the Eigen Core module        |
 | `#define EIV_INCLUDE_JACOBI`             | Includes the Eigen Jacobi module      |
 | `#define EIV_INCLUDE_HOUSEHOLDER`        | Includes the Eigen Householder module |
