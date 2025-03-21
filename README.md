@@ -46,6 +46,16 @@ To begin using EiV, first either download the plugin from Fab or from the GitHub
 | 5.4                   | ✅ Available on Fab |
 | 5.5                   | ✅ Available on Fab |
 
+| Platform | Supported |
+| -------- | --------- |
+| Windows (32/64 bit) | Yes |
+| Mac | Yes |
+| iOS | No |
+| Android | No |
+| Linux | Yes |
+
+Any platform not supported currently can be supported with some changes in `EiVLibrary.h`. If you want to suggest changes that can be made to allow EiV to support these platforms feel free to do so!
+
 > [!NOTE]
 > If you experience any errors on restarting or building just after EiV is activated (particularly relating to expecting to find a type declared in a module rules), See the [C++ section](#C++:) of the documentation for some tips on resolving that.
 
