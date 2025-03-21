@@ -36,6 +36,9 @@ what we do. We hope to see you there!
 
 To begin using EiV, first either download the plugin from Fab or from the GitHub repository and build it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above, however, Fab will only be guaranteed to have the latest three engine versions available. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
 
+> [!NOTE]
+> If you experience any errors on restarting or building just after EiV is activated (particularly relating to expecting to find a type declared in a module rules), See the [C++ section](#C++:) of the documentation for some tips on resolving that.
+
 | Unreal Engine Version | EiV Compatible |
 | --------------------- | -------------- |
 | 4.27 and below        | ❌            |
@@ -48,16 +51,13 @@ To begin using EiV, first either download the plugin from Fab or from the GitHub
 
 | Platform | Supported |
 | -------- | --------- |
-| Windows (32/64 bit) | Yes |
-| Mac | Yes |
-| iOS | No |
-| Android | No |
-| Linux | Yes |
+| Windows (32/64 bit) | ✅ Yes |
+| Mac | ✅ Yes |
+| iOS | ❌ No |
+| Android | ❌ No |
+| Linux | ✅ Yes |
 
 Any platform not supported currently can be supported with some changes in `EiVLibrary.h`. If you want to suggest changes that can be made to allow EiV to support these platforms feel free to do so!
-
-> [!NOTE]
-> If you experience any errors on restarting or building just after EiV is activated (particularly relating to expecting to find a type declared in a module rules), See the [C++ section](#C++:) of the documentation for some tips on resolving that.
 
 ### Blueprints:
 
