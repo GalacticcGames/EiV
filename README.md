@@ -66,7 +66,7 @@ Once you have an Eigen/EiV type in your blueprint, you can use the EiV functions
 
 To use EiV in C++ is a bit more complicated than in Blueprints, but still far simpler than setting up Eigen yourself in C++. First, make sure you have an Unreal Engine project configured for C++. Then, go to whatever module you plan on using EiV in. Open up the `build.cs` file for that module and add the string, `"EiV"`, to the public and/or private dependency module lists as needed. EiV should be all linked up to your module and you should be good to start using EiV functionality in your modules files.
 
-To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to make suree yu access the Eigen modules you need and that their access doesn't spill over to other files where it may be unnecessary. An example of an EiV include is below.
+To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to make sure you access the Eigen modules you need and that their access doesn't spill over to other files where it may be unnecessary. An example of an EiV include is below.
 
 ```c
 // ...
@@ -131,3 +131,5 @@ Once EiV is all included, you can just start coding using the usual C++, Unreal 
 #### $\textsf{\color{#18afd3}{18afd3}}$
 
 ##### $\textsf{\color{#5ec3d5}{5ec3d5}}$
+
+${ \textsf #1}$
