@@ -34,22 +34,15 @@ what we do. We hope to see you there!
 
 ### Getting Started:
 
-To begin using EiV, first either download the plugin from Fab or from the GitHub repository and build it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
+To begin using EiV, first either download the plugin from Fab or from the GitHub repository and build it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above, however, Fab will only be guaranteed to have the latest three engine versions available. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
 
 | Unreal Engine Version | EiV Compatible |
-| --------------------- | -------------- |
 | 4.27 and below        | ❌            |
-| --------------------- | -------------- |
 | 5.0                   | ❌            |
-| --------------------- | -------------- |
-| 5.1                   | ⚠️ Built From Source |
-| --------------------- | -------------- |
-| 5.2                   | ⚠️ Built From Source |
-| --------------------- | -------------- |
+| 5.1                   | ⚠️ Build From Source |
+| 5.2                   | ⚠️ Build From Source |
 | 5.3                   | ✅ Available on Fab |
-| --------------------- | -------------- |
 | 5.4                   | ✅ Available on Fab |
-| --------------------- | -------------- |
 | 5.5                   | ✅ Available on Fab |
 
 > [!NOTE]
@@ -64,11 +57,25 @@ Using EiV in Blueprints is quite simple. It is just implemented as a Blueprint F
 
 Most EiV types are accessed via converter nodes. These nodes take what will be converted to the other type on one end and then swap that input type to the output. For example, the node below has a Matrix input and an Eigen Matrix input. Both of these inputs are reflected as outputs. When a normal matrix is input to this converter, the converter outputs the converted type from the Out Eigen Matrix pin. The pattern follows for an Eigen Matrix input - it is output from the Out Matrix pin. **Inputs do not directly carry through this node.** If a input pin is unconnected, that is no problem for EiV and it will just output the conversion of the empty type (often being 0 or some null matrix for blank inputs).
 
-Once you have an Eigen/EiV type in your blueprint, you can use the EiV functiosn for those types. These functions are more or less a 1:1 mapping to the actual Eigen functions, so checking out the [Eigen documentation](https://eigen.tuxfamily.org/dox/) should help you understand how they work if you are unfamiliar.
+Once you have an Eigen/EiV type in your blueprint, you can use the EiV functions for those types. These functions are more or less a 1:1 mapping to the actual Eigen functions, so checking out the [Eigen documentation](https://eigen.tuxfamily.org/dox/) should help you understand how they work if you are unfamiliar.
 
 ### C++:
 
+To use EiV in C++ is a bit more complicated than in Blueprints, but still far simpler than setting up Eigen yourself in C++. First, make sure you have an Unreal Engine project configured for C++. Then, go to whatever module you plan on using EiV in. Open up the `build.cs` file for that module and add the string, `"EiV"`, to the public and/or private dependency module lists as needed. EiV should be all linked up to your module and you should be good to start using EiV functionality in your modules files.
 
+To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to make suree yu access the Eigen modules you need and that their access doesn't spill over to other files where it may be unnecessary. An example of an EiV include is below.
+
+```c
+// ...
+
+#define EIV_INCLUDE_DENSE_MATRIX_ARRAY
+#define EIV_INCLUDE_GEOMETRY
+#define EIV_UNDEFINE_INCLUDES
+
+#include "EiVLibrary.h"
+
+// ...
+```
 
 <!-- MARKDOWN THEME -->
 # $\textsf{\color{#f5750e}{f5750e}}$
