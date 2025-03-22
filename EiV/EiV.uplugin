@@ -1,0 +1,28 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EiV",
+	"Description": "Provides convienient Unreal Engine Blueprint and C++ access to the internal Eigen library.",
+	"Category": "Programming",
+	"CreatedBy": "Galacticc Games",
+	"CreatedByURL": "https://galacticcgames.github.io/",
+	"DocsURL": "https://github.com/GalacticcGames/EiV?tab=readme-ov-file#eiv---quick-linear-algebra-and-matrix-access",
+	"MarketplaceURL": "https://www.fab.com/listings/b37b7133-7653-4e47-9d4a-f625e99738dc",
+	"SupportURL": "https://github.com/GalacticcGames/EiV?tab=readme-ov-file#support-tutorials-and-documentation",
+	"EngineVersion": "5.1.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "EiV",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen",
+			"PlatformAllowList": [
+				"Win64",
+				"Linux",
+				"LinuxArm64"
+			]
+		}
+	]
+}
