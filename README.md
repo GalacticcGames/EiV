@@ -43,8 +43,8 @@ To begin using EiV, first either download the plugin from Fab or from the GitHub
 | --------------------- | -------------- |
 | 4.27 and below        | ❌            |
 | 5.0                   | ❌            |
-| 5.1                   | ⚠️ Build From Source |
-| 5.2                   | ⚠️ Build From Source |
+| 5.1                   | ✅ Available on Fab |
+| 5.2                   | ✅ Available on Fab |
 | 5.3                   | ✅ Available on Fab |
 | 5.4                   | ✅ Available on Fab |
 | 5.5                   | ✅ Available on Fab |
