@@ -124,6 +124,9 @@ Once EiV is all included, you can just start coding using the usual C++, Unreal 
 > [!WARNING]
 > If you included EiV in your public and private module dependencies and your IDE still says it cannot include `EiVLibrary.h`, at least in Visual Studio, there is a simple enough fix. All you need to do is go to Project->Properties, and then in the new window, Config Properties->VC++ Directories, and finally put `$(LibraryPath)` in the Library Directories field. Refresh the VS project and intellisense should be albe to acces the Eigen and EiV types now. Even if you cannot resolve this, the project will still work just fine, but you unfortunately won't have easy access to any form of intellisense for working with EiV and Eigen.
 
+## Licensing Note:
+Eigen is distributed under the [MPL2 License](https://www.mozilla.org/en-US/MPL/2.0/), so if you use Eigen functionality through EiV, you will need to make sure that you also take the appropriate actions that the MPL2 License requires for your software.
+
 ## Changelog:
 
 ### {Date} - EiV 1.0.0 Release:
