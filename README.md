@@ -34,7 +34,7 @@ what we do. We hope to see you there!
 
 ### Getting Started:
 
-To begin using EiV, first either download the plugin from Fab or from the GitHub repository and build it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above, however, Fab will only be guaranteed to have the latest three engine versions available. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
+To begin using EiV, first either download the plugin from Fab or from the GitHub repository and [build](https://dev.epicgames.com/community/learning/tutorials/qz93/unreal-engine-building-plugins) it from source. EiV is engineered in Unreal Engine 5.1 to ensure it is compatible with versions 5.1 and above, however, Fab will only be guaranteed to have the latest three engine versions available. Once you have EiV in your engine's plugin directory *(Engine / Plugins / Marketplace /)*, open the project you want to use it in and enable the plugin. It should be under the programming category. You may need to restart Unreal Engine for changes to take effect. Then you should be good to go to start using Eigen through EiV in C++ and Blueprints. More specific instructions for each are in the below sections.
 
 > [!NOTE]
 > If you experience any errors on restarting or building just after EiV is activated (particularly relating to expecting to find a type declared in a module rules), See the [C++ section](#C++:) of the documentation for some tips on resolving that.
@@ -61,7 +61,7 @@ Any platform not supported currently can be supported with some changes in `EiVL
 
 ### Blueprints:
 
-Using EiV in Blueprints is quite simple. It is just implemented as a Blueprint Function Library and should be accessible from the context menu by searching for 'EiV' (It will appear as 'Ei V' because of the way the engine parses text). 
+Using EiV in Blueprints is quite simple. It is just implemented as a [Blueprint Function Library](https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprint-function-libraries-in-unreal-engine) and should be accessible from the context menu by searching for 'EiV' (It will appear as 'Ei V' because of the way the engine parses text). 
 
 > [!IMPORTANT]
 > Not all EiV blueprint types do something as of now. We are working on adding and improving blueprint implementations over time, since Eigen is a large library to turn into blueprint functions.
@@ -74,7 +74,7 @@ Once you have an Eigen/EiV type in your blueprint, you can use the EiV functions
 
 ### C++:
 
-To use EiV in C++ is a bit more complicated than in Blueprints, but still far simpler than setting up Eigen yourself in C++. First, make sure you have an Unreal Engine project configured for C++. Then, go to whatever module you plan on using EiV in. Open up the `build.cs` file for that module and add the string, `"EiV"`, to the public and/or private dependency module lists as needed. EiV should be all linked up to your module and you should be good to start using EiV functionality in your modules files.
+To use EiV in C++ is a bit more complicated than in Blueprints, but still far simpler than setting up Eigen yourself in C++. First, make sure you have an Unreal Engine project configured for C++. Then, go to whatever [module](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-modules) you plan on using EiV in. Open up the `build.cs` file for that module and add the string, `"EiV"`, to the public and/or private dependency module lists [as needed](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-modules#privateandpublicdependencies). EiV should be all linked up to your module and you should be good to start using EiV functionality in your modules files.
 
 To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to make sure you access the Eigen modules you need and that their access doesn't spill over to other files where it may be unnecessary. An example of an EiV include is below.
 
@@ -90,7 +90,7 @@ To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to
 // ...
 ```
 
-What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those headers, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down header by header, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` preprocessor pastes in the `EiVLibrary.h` file. 
+What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those macros, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down line by line, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module header, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` [preprocessor](https://en.cppreference.com/w/cpp/preprocessor/include) pastes in the `EiVLibrary.h` file. 
 
 What the undefinition of these macros allows for is letting you access Eigen in another file within this module you are working in while not necessarily including anything you accessed in any other file, thus allowing for enhanced IWYU *(Include What You Use)* formatting and procedure. See more on Unreal Engine's take on IWYU [here](https://dev.epicgames.com/documentation/en-us/unreal-engine/include-what-you-use-iwyu-for-unreal-engine-programming).
 
@@ -122,7 +122,7 @@ Here is a list of EiV macros to declare before an include and what they do:
 Once EiV is all included, you can just start coding using the usual C++, Unreal Engine, and Eigen techniques. EiV also provides a helper struct, (`FEiVHelper`) to assist in conversions from Unreal Engine to Eigen types and provide a few other options for settings things up with Eigen. 
 
 > [!WARNING]
-> If you included EiV in your public and private module dependencies and your IDE still says it cannot include `EiVLibrary.h`, at least in Visual Studio, there is a simple enough fix. Once you have built the project with EiV in your dependencies, go and regenerate the Visual Stio Project Files. Then, all you need to do is go to Project->Properties, and then in the new window, Config Properties->VC++ Directories, and finally put `$(LibraryPath)` in the Library Directories field. Refresh the VS project and intellisense should be albe to acces the Eigen and EiV types now. Even if you cannot resolve this, the project will still work just fine, but you unfortunately won't have easy access to any form of intellisense for working with EiV and Eigen.
+> If you included EiV in your public and private module dependencies and your IDE still says it cannot include `EiVLibrary.h`, at least in [Visual Studio](https://visualstudio.microsoft.com/), there is a simple enough fix. Once you have built the project with EiV in your dependencies, go and regenerate the Visual Studio Project Files. Then, all you need to do is go to Project->Properties, and then in the new window, Config Properties->VC++ Directories, and finally put `$(LibraryPath)` in the Library Directories field. Refresh the VS project (in Visual Studio, <ins>not</ins> Unreal Engine) and [intellisense](https://learn.microsoft.com/en-us/visualstudio/ide/using-intellisense?view=vs-2022) should be able to acces the Eigen and EiV types now. Even if you cannot resolve this, the project will still work just fine, but you unfortunately won't have easy access to any form of intellisense for working with EiV and Eigen.
 
 ## Licensing Note:
 Eigen is distributed under the [MPL2 License](https://www.mozilla.org/en-US/MPL/2.0/), so if you use Eigen functionality through EiV, you will need to make sure that you also take the appropriate actions that the MPL2 License requires for your software.
