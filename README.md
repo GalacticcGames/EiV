@@ -26,7 +26,7 @@ EiV is designed to be a *time-saver*⌚ when it comes to using linear algebra an
 purchased our products.* You can look at questions and written reviews from community members on a variety of topics relating to
 what we do. We hope to see you there!
 
-◿ TODO can be found on YouTube and cover everything from basic setup to making advanced systems with EiV
+◿ A setup tutorial can be found on YouTube demonstrating how to get EiV working in an Unreal Engine project for Blueprints and C++
 
 ◿ Detailed documentation and the changelog is available below if you want to read more about EiV
 
