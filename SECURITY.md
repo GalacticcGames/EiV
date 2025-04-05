@@ -16,6 +16,8 @@ process otherwise the plugin may not work as intended.
 | 5.0.x   | :x:                |
 | < 4.27.x| :x:                |
 
+Another compatibility note: **Do not** rely on any of the EiV code from the development branch. It is likely currently being built and in testing, so no functionality can be guaranteed. Once the development branch is merged with the main branch, that code has been thoroughly tested by us to the point where we believe it is shippable and is pending Fab approval. At that point you can feel free to use it with some degree of certainty, but if Fab requests changes that code *will be altered*. Only once there is an official release on the EiV GitHub repository can the code for that update iteration be fully considered 'functional', which will usually come after Fab approval of the updates.
+
 ## Reporting a Vulnerability
 
 As with any code that allows for you to do your own memory management, there naturally comes potential for security vulnerabilities. When working mostly within Unreal C++, much of that danger is restrained thanks to UObjects.
