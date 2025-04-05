@@ -84,12 +84,12 @@ To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to
 #define EIV_INCLUDE_GEOMETRY
 #define EIV_UNDEFINE_INCLUDES
 
-#include "EiVLibrary.h"
+#include "../../Plugins/Marketplace/EiV_5.1/Source/EiV/Public/EiVLibrary.h"
 
 // ...
 ```
 
-What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those macros, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down line by line, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module header, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` [preprocessor](https://en.cppreference.com/w/cpp/preprocessor/include) pastes in the `EiVLibrary.h` file. 
+What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those macros, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down line by line, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module header, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` [preprocessor](https://en.cppreference.com/w/cpp/preprocessor/include) pastes in the `EiVLibrary.h` file. The lengthy path for this file is to access it from the plugins folder of the engine. Note that the `EiV_5.1` may need to be changed to `EiV_<YOUR ENGINE VERSION>` based on what build of EiV you are using.
 
 What the undefinition of these macros allows for is letting you access Eigen in another file within this module you are working in while not necessarily including anything you accessed in any other file, thus allowing for enhanced IWYU *(Include What You Use)* formatting and procedure. See more on Unreal Engine's take on IWYU [here](https://dev.epicgames.com/documentation/en-us/unreal-engine/include-what-you-use-iwyu-for-unreal-engine-programming).
 
