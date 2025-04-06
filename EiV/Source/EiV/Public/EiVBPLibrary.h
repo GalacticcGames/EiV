@@ -1,9 +1,9 @@
 // Copyright 2025, Galacticc Games. All rights reserved.
 
-/* Licensed under MIT license. See License.txt for full license text.
+/* Licensed under MIT license. See LICENSE for full license text.
 *
 *        Created: 20th March 2025
-*  Last Modified: 20th March 2025
+*  Last Modified: 6th April 2025
 */
 
 #pragma once
@@ -390,11 +390,11 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Eigen Blueprint Analogs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 //=========================================================================================//
 
-	//Adds two matricies. They must be the same size (rows and columns) or the null matrix is returned.
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Add Matricies", CompactNodeTitle = "A+B", Keywords = "EiV Eigen Matrix Add", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Matrix")
+	//Adds two matrices. They must be the same size (rows and columns) or the null matrix is returned.
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Add Matrices", CompactNodeTitle = "A+B", Keywords = "EiV Eigen Matrix Add", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Matrix")
 	static void EiVAddMatrix(FEiVDynamicMatrix A, FEiVDynamicMatrix B, FEiVDynamicMatrix& Matrix);
-	//Subtracts two matricies. They must be the same size (rows and columns) or the null matrix is returned.
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Subtract Matricies", CompactNodeTitle = "A-B", Keywords = "EiV Eigen Matrix Subtract Minus", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Matrix")
+	//Subtracts two matrices. They must be the same size (rows and columns) or the null matrix is returned.
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Subtract Matrices", CompactNodeTitle = "A-B", Keywords = "EiV Eigen Matrix Subtract Minus", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Matrix")
 	static void EiVSubtractMatrix(FEiVDynamicMatrix A, FEiVDynamicMatrix B, FEiVDynamicMatrix& Matrix);
 	//Multiplies a matrix by a scalar. 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Scalar Multiply Matrix", CompactNodeTitle = "s*A", Keywords = "EiV Eigen Matrix Multiply times scalar", AutoCreateRefTerm = "s, A"), Category = "EiV|Core|Matrix")
@@ -411,13 +411,13 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	//Gets the adjoint of a matrix
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Adjoint Matrix", CompactNodeTitle = "A*", Keywords = "EiV Eigen Matrix Adjoint", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
 	static void EiVAdjointMatrix(FEiVDynamicMatrix A, FEiVDynamicMatrix& Matrix);
-	//Multiply two matricies together. The columns of A must be the same size as the rows of B otherwise the null matrix is returned.
+	//Multiply two matrices together. The columns of A must be the same size as the rows of B otherwise the null matrix is returned.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Matrix Multiplication", CompactNodeTitle = "A*B", Keywords = "EiV Eigen Matrix Multiply times", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Matrix")
 	static void EiVMatrixMultiplication(FEiVDynamicMatrix A, FEiVDynamicMatrix B, FEiVDynamicMatrix& Matrix);
-	//Calculate the dot product of two vectors. Both of these matricies must be the same size. Only their first column is used for this operation. It is often best to use matricies from dynamic vectors for this.
+	//Calculate the dot product of two vectors. Both of these matrices must be the same size. Only their first column is used for this operation. It is often best to use matrices from dynamic vectors for this.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Dot Product", CompactNodeTitle = "A dot B", Keywords = "EiV Eigen Matrix dot product vector", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Vector")
 	static void EiVDotProduct(FEiVDynamicMatrix A, FEiVDynamicMatrix B, double& DotProduct);
-	//Calculate the cross product of two vectors. Both of these matricies must be the 3x3. Only thier first column is used for this operation. It is often best to use matricies from dynamic vectors for this. If any of these conditions are violated the null matrix is returned.
+	//Calculate the cross product of two vectors. Both of these matrices must be the 3x3. Only thier first column is used for this operation. It is often best to use matrices from dynamic vectors for this. If any of these conditions are violated the null matrix is returned.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Cross Product", CompactNodeTitle = "A cross B", Keywords = "EiV Eigen Matrix cross product vector", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Vector")
 	static void EiVCrossProduct(FEiVDynamicMatrix A, FEiVDynamicMatrix B, FEiVDynamicMatrix& CrossProduct);
 	//The number of rows in a matrix
@@ -596,7 +596,7 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	//Converts between Unreal Engine Vectors and Eigen Row Vector types (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Vector4 To Row Vector", Keywords = "EiV Eigen Row Vector4", AutoCreateRefTerm = "Vector, RowVector"), Category = "EiV|Core|Row Vector")
 	static void EiVVector4ToRowVector(FVector4 Vector, FEiVRowVector RowVector, FVector4& OutVector, FEiVRowVector& OutRowVector);
-	//Converts between Unreal Engine Matricies and Eigen Matrix types (Input types are inverted)
+	//Converts between Unreal Engine Matrices and Eigen Matrix types (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Matrix To Eigen Matrix", Keywords = "EiV Eigen Matrix", AutoCreateRefTerm = "Matrix, EigenMatrix"), Category = "EiV|Core|Matrix")
 	static void EiVMatrixToEigenMatrix(FMatrix Matrix, FEiVMatrix EigenMatrix, FMatrix& OutMatrix, FEiVMatrix& OutEigenMatrix);
 	//Creates a dynamic matrix from this Eigen matrix
@@ -617,10 +617,10 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	//Converts between Unreal Engine Vector and Eigen Sparse Vector types (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Vector4 To Sparse Vector", Keywords = "EiV Eigen Vector4 Sparse", AutoCreateRefTerm = "Vector, SparseVector"), Category = "EiV|Sparse Core|Sparse Vector")
 	static void EiVVector4ToSparseVector(FVector4 Vector, FEiVSparseVector SparseVector, FVector4& OutVector, FEiVSparseVector& OutSparseVector);
-	//Converts between Unreal Engine Matricies and Eigen Sparse Matricies (Input types are inverted)
+	//Converts between Unreal Engine Matrices and Eigen Sparse Matrices (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Matrix To Sparse Matrix", Keywords = "EiV Eigen Sparse Matrix", AutoCreateRefTerm = "Matrix, SparseMatrix"), Category = "EiV|Sparse Core|Sparse Matrix")
 	static void EiVMatrixToSparseMatrix(FMatrix Matrix, FEiVSparseMatrix SparseMatrix, FMatrix& OutMatrix, FEiVSparseMatrix& OutSparseMatrix);
-	//Converts between Unreal Engine Arrays and Eigen Sparse Matricies (Input types are inverted)
+	//Converts between Unreal Engine Arrays and Eigen Sparse Matrices (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Array To Sparse Matrix", Keywords = "EiV Eigen Sparse Matrix Array", AutoCreateRefTerm = "Array, Rows, Cols, SparseMatrix"), Category = "EiV|Sparse Core|Sparse Matrix")
 	static void EiVArrayToSparseMatrix(TArray<double> Array, int32 Rows, int32 Cols, FEiVSparseMatrix SparseMatrix, TArray<double>& OutArray, FEiVSparseMatrix& OutSparseMatrix);
 	//Converts between Unreal Engine and Eigen Quaternion types (Input types are inverted)
