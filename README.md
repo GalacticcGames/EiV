@@ -84,7 +84,7 @@ To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to
 #define EIV_INCLUDE_GEOMETRY
 #define EIV_UNDEFINE_INCLUDES
 
-#include "../../Plugins/Marketplace/EiV_5.1/Source/EiV/Public/EiVLibrary.h"
+#include "../../Plugins/Marketplace/EiV_5_1/Source/EiV/Public/EiVLibrary.h"
 
 // ...
 ```
