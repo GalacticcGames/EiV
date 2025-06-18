@@ -3,7 +3,7 @@
 /* Licensed under MIT license. See LICENSE for full license text.
 *
 *        Created: 20th March 2025
-*  Last Modified: 6th April 2025
+*  Last Modified: 17th June 2025
 */
 
 #pragma once
@@ -502,10 +502,10 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Scalar Multiply", CompactNodeTitle = "s*[A]", Keywords = "EiV Eigen Array scalar multiply", AutoCreateRefTerm = "S, A"), Category = "EiV|Core|Array")
 	static void EiVArrayScalarMultiply(double s, FEiVArray A, FEiVArray& Array);
 	//Add scalars to Eigen arrays
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Scalar Add", CompactNodeTitle = "[A] + s", Keywords = "EiV Eigen Array scalar add", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Array")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Scalar Add", CompactNodeTitle = "[A] + s", Keywords = "EiV Eigen Array scalar add", AutoCreateRefTerm = "A, S"), Category = "EiV|Core|Array")
 	static void EiVArrayScalarAdd(FEiVArray A, double s, FEiVArray& Array);
 	//Subtract scalars from Eigen arrays
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Scalar Subtract", CompactNodeTitle = "[A] - s", Keywords = "EiV Eigen Array scalar subtract minus", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Array")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Scalar Subtract", CompactNodeTitle = "[A] - s", Keywords = "EiV Eigen Array scalar subtract minus", AutoCreateRefTerm = "A, S"), Category = "EiV|Core|Array")
 	static void EiVArrayScalarSubtract(FEiVArray A, double s, FEiVArray& Array);
 	//Multiplies Eigen arrays in a component-wsie manner
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array Multiply", CompactNodeTitle = "[A] * [B]", Keywords = "EiV Eigen Array multiply times", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Array")
@@ -522,6 +522,63 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	//Creates a string of the array
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Array To String", Keywords = "EiV Eigen Array string", AutoCreateRefTerm = "A"), Category = "EiV|Core|Array")
 	static void EiVArrayToString(FEiVArray A, FString& String);
+
+	//EiV 1.0.1 =================================================================
+	
+	//Checks if all elements of the matrix are finite
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "All Finite",  Keywords = "EiV Eigen Matrix All Finite Infinite", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixAllFinite(FEiVDynamicMatrix A, bool& Out);
+	//Performs a complete orthogonal decomposition of the matrix. In the future the full Eigen object will be accessible to blueprints instead of just the resultant matrices.
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Complete Orthogonal Decomposition", Keywords = "EiV Eigen Matrix complete orthogonal decomposition", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixCompleteOrthogonalDecomposition(FEiVDynamicMatrix A, FEiVDynamicMatrix& P, FEiVDynamicMatrix& QTZ, FEiVDynamicMatrix& Q, FEiVDynamicMatrix& T, FEiVDynamicMatrix& Z);
+	//Checks if the matrix is diagonal
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Diagonal", Keywords = "EiV Eigen Matrix Is Diagonal", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsDiagonal(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the matrix is the identity matrix
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Identity", Keywords = "EiV Eigen Matrix Is Identity", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsIdentity(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the matrix is lower triangular
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Lower Triangular", Keywords = "EiV Eigen Matrix Is Lower Triangular", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsLowerTriangular(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the maticies are orthogonal
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Orthogonal", Keywords = "EiV Eigen Matrix Is Orthogonal", AutoCreateRefTerm = "A, B"), Category = "EiV|Core|Vector")
+	static void EiVVectorIsOrthogonal(FEiVDynamicVector A, FEiVDynamicVector B, bool& Out);
+	//Checks if the matrix is unitary
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Unitary", Keywords = "EiV Eigen Matrix Is Unitary", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsUnitary(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the matrix is upper triangular
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Upper Triangular", Keywords = "EiV Eigen Matrix Is Upper Triangular", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsUpperTriangular(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the matrix consists of ones
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Ones", Keywords = "EiV Eigen Matrix Is Ones", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsOnes(FEiVDynamicMatrix A, bool& Out);
+	//Checks if the matrix consists of zeros
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Zero", Keywords = "EiV Eigen Matrix Is Zero", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIsZero(FEiVDynamicMatrix A, bool& Out);
+	//The size of the matrix diagonal
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Diagonal Size", Keywords = "EiV Eigen Matrix Diaonal Size", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixDiagonalSize(FEiVDynamicMatrix A, int& Out);
+	//The euler angles from the matrix when interpreted as rotation (0 = x, 1 = y, 2 = z). A copy of the input matrix is either truncated or filled with zeros until it is a 3x3 matrix for this operation.
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Euler Angles", Keywords = "EiV Eigen Matrix Euler Angles", AutoCreateRefTerm = "A, A0, A1, A2"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixEulerAngles(FEiVDynamicMatrix A, int a0, int a1, int a2, FVector& Out);
+	//The full pivot LU-decomposition of this matrix. The full Eigen object will be available to blueprints in the future.
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Full Pivot LU Decomposition", Keywords = "EiV Eigen Matrix Full Pivot LU Decomposition", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixFullPivLU(FEiVDynamicMatrix A, FEiVDynamicMatrix& LU, FEiVDynamicMatrix& P, FEiVDynamicMatrix& L, FEiVDynamicMatrix& U, FEiVDynamicMatrix& Q);
+	//Checks if the matrix contains any NaNs
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Has NaN", Keywords = "EiV Eigen Matrix Has NaN", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixHasNaN(FEiVDynamicMatrix A, bool& Out);
+	//The Identity matrix of the given dimensions
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Identity Matrix", Keywords = "EiV Eigen Matrix Identity", AutoCreateRefTerm = "Rows, Cols"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixIdentity(int Rows, int Cols, FEiVDynamicMatrix& I);
+	//The number of nonzero elements in the matrix (stored elements so almost always the size of the matrix, useful for checking unset values)
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Nonzeros", Keywords = "EiV Eigen Matrix Nonzeros", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixNonzeros(FEiVDynamicMatrix A, int& Nonzeros);
+	//The (likely Frobenius) norm of the matrix
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Norm", Keywords = "EiV Eigen Matrix Norm Frobenius", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixNorm(FEiVDynamicMatrix A, double& Norm);
+	//Normalizes the matrix in-place
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Normalize", Keywords = "EiV Eigen Matrix Normalize", AutoCreateRefTerm = "A"), Category = "EiV|Core|Matrix")
+	static void EiVMatrixNormalize(UPARAM(ref)FEiVDynamicMatrix& A);
 
 //=========================================================================================//
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FEiVHelper Blueprint functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -547,13 +604,13 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	static void EiVMakeDynamicMatrix(TArray<double> Array, int32 Rows, int32 Cols, FEiVDynamicMatrix& Matrix);
 	//Creates a dynamic Eigen vector that can be of any size.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Dynamic Vector", Keywords = "EiV Eigen Dynamic Vector", AutoCreateRefTerm = "Array, Rows"), Category = "EiV|Core|Vector")
-	static void EiVMakeDynamicVector(TArray<double> Array, int32 Rows, FEiVDynamicMatrix& Vector);
+	static void EiVMakeDynamicVector(TArray<double> Array, int32 Rows, FEiVDynamicMatrix& Matrix, FEiVDynamicVector& Vector);
 	//Creates a dynamic Eigen matrix that can be of any size with random elements from 0 to 1.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Random Dynamic Matrix", Keywords = "EiV Eigen Dynamic Matrix Random", AutoCreateRefTerm = "Array, Rows, Cols"), Category = "EiV|Core|Matrix")
 	static void EiVMakeRandomDynamicMatrix(int32 Rows, int32 Cols, FEiVDynamicMatrix& Matrix);
 	//Creates a dynamic Eigen vector that can be of any size with random elements from 0 to 1.
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Random Dynamic Vector", Keywords = "EiV Eigen Dynamic Vector Random", AutoCreateRefTerm = "Rows"), Category = "EiV|Core|Vector")
-	static void EiVMakeRandomDynamicVector(int32 Rows, FEiVDynamicMatrix& Vector);
+	static void EiVMakeRandomDynamicVector(int32 Rows, FEiVDynamicMatrix& Matrix, FEiVDynamicVector& Vector);
 	//This sets the number of threads Eigen can use at any given time
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Set Eigen Threads", Keywords = "EiV Eigen Threads"), Category = "EiV")
 	static void EiVSetEigenThreads(int32 Threads);
@@ -580,7 +637,7 @@ class UEiVBPLibrary : public UBlueprintFunctionLibrary
 	static void EiVVectorToEiVVector(FVector Vector, FEiVVector EiVVector, FVector& OutVector, FEiVVector& OutEiVVector);
 	//Creates a dynamic vector from this vector
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Vector To Dynamic Vector", Keywords = "EiV Eigen Dynamic Vector", AutoCreateRefTerm = "Vector"), Category = "EiV|Core|Vector")
-	static void EiVVectorToDynamicVector(FEiVVector Vector, FEiVDynamicMatrix& OutDynamicVector);
+	static void EiVVectorToDynamicVector(FEiVVector Vector, FEiVDynamicMatrix& OutDynamicVectorMatrix, FEiVDynamicVector& OutDynamicVector);
 	//Converts between Unreal Engine and Eigen Vector types (Input types are inverted)
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Vector4 To Eigen-Type Vector", Keywords = "EiV Eigen Vector4", AutoCreateRefTerm = "Vector, EiVVector"), Category = "EiV|Core|Vector")
 	static void EiVVector4ToEiVVector(FVector4 Vector, FEiVVector EiVVector, FVector4& OutVector, FEiVVector& OutEiVVector);
