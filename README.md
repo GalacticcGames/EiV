@@ -47,6 +47,7 @@ To begin using EiV, first either [download](https://www.fab.com/listings/3af6392
 | 5.3                   | ✅ Available on Fab |
 | 5.4                   | ✅ Available on Fab |
 | 5.5                   | ✅ Available on Fab |
+| 5.6                   | ✅ Available on Fab |
 
 | Platform | Officially Supported |
 | -------- | --------- |
