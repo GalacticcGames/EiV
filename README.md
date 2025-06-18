@@ -12,7 +12,7 @@ EiV is a **C++ and Blueprint Library** for [Unreal Engine](https://www.unrealeng
 EiV is designed to be a *time-saver*⌚ when it comes to using linear algebra and Eigen in Unreal Engine. The include pattern it offers will *save you all of the issues* that come with including a third party library in Unreal Engine. EiV's macro-based include pattern makes sure that you *only need to include the main header* file to have access to *all of the code you need* in any C++ file. It also helps those that don't want to use C++ to still have linear algebra in blueprints! EiV also offers an *ever-growing*⬆️*suite of functions* for Blueprints to use linear algebra! If some part of the blueprint functionality looks incomplete, it will likely be added soon, since it takes a very long time to convert all of Eigen's functionality into Blueprints. You can go check out the EiV **public GitHub repo (you are already here)** to see what progress is being made, make suggestions, and maybe even get some updates before Fab!
 
 ## Features:
-* **80+ Blueprint Functions** and counting - EiV has **growing blueprint support** for linear algebra - *something you won't find anywhere else!*
+* **100+ Blueprint Functions** and counting - EiV has **growing blueprint support** for linear algebra - *something you won't find anywhere else!*
 * **Dynamically-sized Real** and **Complex** valued matrices for blueprints!
 * **250+ C++ typedefs** to make directly using Eigen types just a bit easier and to save you writing 'Eigen::' before everything
 * **70+ C++ helper functions** to help with converting back and forth between Unreal Engine and Eigen types
@@ -47,6 +47,7 @@ To begin using EiV, first either [download](https://www.fab.com/listings/3af6392
 | 5.3                   | ✅ Available on Fab |
 | 5.4                   | ✅ Available on Fab |
 | 5.5                   | ✅ Available on Fab |
+| 5.6                   | ✅ Available on Fab |
 
 | Platform | Officially Supported |
 | -------- | --------- |
@@ -89,7 +90,7 @@ To include EiV in a `.h` or `.cpp` file, you need to follow a special pattern to
 // ...
 ```
 
-What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those macros, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down line by line, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module header, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` [preprocessor](https://en.cppreference.com/w/cpp/preprocessor/include) pastes in the `EiVLibrary.h` file. The lengthy path for this file is to access it from the plugins folder of the engine. Note that the `EiV_5.1` may need to be changed to `EiV_<YOUR ENGINE VERSION>` based on what build of EiV you are using.
+What this include pattern does is it allows you to define macros that represent the Eigen headers you want to access through EiV. EiV takes those macros, includes the necessary files, and adds on its own extra utilities as needed for what was included. To break it down line by line, `#define EIV_INCLUDE_DENSE_MATRIX_ARRAY` defines a macro for retrieving all headers associated with arrays and dense matrices, `#define EIV_INCLUDE_GEOMETRY` includes the Eigen Geometry module header, and `#define EIV_UNDEFINE_INCLUDES` undefines any of these include macros within this file, effectively making them local when the `#include` [preprocessor](https://en.cppreference.com/w/cpp/preprocessor/include) pastes in the `EiVLibrary.h` file. The lengthy path for this file is to access it from the plugins folder of the engine. Note that the `EiV_5_1` may need to be changed to `EiV_<YOUR ENGINE VERSION>` based on what build of EiV you are using.
 
 What the undefinition of these macros allows for is letting you access Eigen in another file within this module you are working in while not necessarily including anything you accessed in any other file, thus allowing for enhanced IWYU *(Include What You Use)* formatting and procedure. See more on Unreal Engine's take on IWYU [here](https://dev.epicgames.com/documentation/en-us/unreal-engine/include-what-you-use-iwyu-for-unreal-engine-programming).
 
@@ -128,6 +129,28 @@ Eigen is distributed under the [MPL2 License](https://www.mozilla.org/en-US/MPL/
 
 ## Changelog:
 
-### {Date} - EiV 1.0.0 Release:
+### {TBD} - EiV 1.0.1 Release:
+ - TL;DR the 'What's in my Matrix?' update
+ - Unreal Engine 5.6 Support!🎉
+ - Matrix All Finite Blueprint Function
+ - Matrix Complete Orthogonal Decomposition Blueprint Function
+ - Matrix Is Diagonal BLueprint Function
+ - Matrix Is Identity Blueprint Function
+ - Matrix Is Lower Triangular Blueprint Function
+ - Matrix Is Upper Triangular Blueprint Function
+ - Vector Is Orthogonal Blueprint Function
+ - Matrix Is Unitary Blueprint Function
+ - Matrix Is Ones Blueprint Function
+ - Matrix Is Zero Blueprint Function
+ - Matrix Diagonal Size Blueprint Function
+ - Matrix Euler Angles Blueprint Function
+ - Matrix Full Pivot LU Decomposition Blueprint Function
+ - Matrix Has NaN Blueprint Function
+ - Matrix Identity Blueprint Function
+ - Matrix Norm Blueprint Function
+ - Matrix Normalize Blueprint Function (for all matrices, not just vectors - normalizes according to the Frobenius norm of the matrix)
+ - On any blueprint functions that create EiVDynamicVector structs, both an EiVDynamicVector and EiVDynamicMatrix output are provided
+
+### 4/9/25 - EiV 1.0.0 Release:
  - Initial Release
  - Baseline features included

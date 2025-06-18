@@ -18,7 +18,7 @@ that require a new EiV blueprint struct, please place the new struct along with 
 not to have it placed somewhere that requires a scavenger hunt. Also, if creating new EiV typedefs, please make sure to group them 
 logically and that you space them out like shown already in the source file to help make them a bit more readable (*yes, we know it 
 is hard to read in the first place, but anything helps*). Lastly, if creating typedefs that have a consistent pattern involved, try 
-and make a macro for them like `MAKE_COMMON_TYPEDEFS` in `EiVLibrary.h` to reduce visual bloat, and make sure to undefine the marco 
+and make a macro for them like `MAKE_COMMON_TYPEDEFS` in `EiVLibrary.h` to reduce visual bloat, and make sure to undefine the macro 
 once you are done using it.
 
 > [!Tip]

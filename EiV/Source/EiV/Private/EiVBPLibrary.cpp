@@ -3,7 +3,7 @@
 /* Licensed under MIT license. See LICENSE for full license text.
 *
 *        Created: 20th March 2025
-*  Last Modified: 6th April 2025
+*  Last Modified: 17th June 2025
 */
 
 #include "EiVBPLibrary.h"
@@ -350,6 +350,111 @@ void UEiVBPLibrary::EiVArrayToString(FEiVArray A, FString& String)
 	String += "]";
 }
 
+void UEiVBPLibrary::EiVMatrixAllFinite(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.allFinite();
+}
+
+void UEiVBPLibrary::EiVMatrixCompleteOrthogonalDecomposition(FEiVDynamicMatrix A, FEiVDynamicMatrix& P, FEiVDynamicMatrix& QTZ, FEiVDynamicMatrix& Q, FEiVDynamicMatrix& T, FEiVDynamicMatrix& Z) {
+	EiVCompleteOrthhogonalDecomposition<EiVMatrixXd> O = A.Matrix.completeOrthogonalDecomposition();
+	P = FEiVDynamicMatrix(O.colsPermutation());
+	QTZ = FEiVDynamicMatrix(O.matrixQTZ());
+	Q = FEiVDynamicMatrix(O.matrixQ());
+	T = FEiVDynamicMatrix(O.matrixT());
+	Z = FEiVDynamicMatrix(O.matrixZ());
+}
+
+void UEiVBPLibrary::EiVMatrixIsDiagonal(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isDiagonal();
+}
+
+void UEiVBPLibrary::EiVMatrixIsIdentity(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isIdentity();
+}
+
+void UEiVBPLibrary::EiVMatrixIsLowerTriangular(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isLowerTriangular();
+}
+
+void UEiVBPLibrary::EiVVectorIsOrthogonal(FEiVDynamicVector A, FEiVDynamicVector B, bool& Out) {
+	Out = A.Vector.isOrthogonal(B.Vector);
+}
+
+void UEiVBPLibrary::EiVMatrixIsUnitary(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isUnitary();
+}
+
+void UEiVBPLibrary::EiVMatrixIsUpperTriangular(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isUpperTriangular();
+}
+
+void UEiVBPLibrary::EiVMatrixIsOnes(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isOnes();
+}
+
+void UEiVBPLibrary::EiVMatrixIsZero(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.isZero();
+}
+
+void UEiVBPLibrary::EiVMatrixDiagonalSize(FEiVDynamicMatrix A, int& Out) {
+	Out = A.Matrix.diagonalSize();
+}
+
+void UEiVBPLibrary::EiVMatrixEulerAngles(FEiVDynamicMatrix A, int a0, int a1, int a2, FVector& Out)
+{
+	EiVMatrix3d RotMat;
+	RotMat << 0,0,0,
+			  0,0,0,
+		      0,0,0; //create a rotation matrix from passed in data, if too much then truncate, if too little then it is zero
+	EiVMatrixXd Block;
+	int Rows = FMath::Min(A.Matrix.rows(),3);
+	int Cols = FMath::Min(A.Matrix.cols(),3);
+	Block = A.Matrix.block(0, 0, Rows, Cols);
+	RotMat.block(0, 0, Rows, Cols) = Block;
+	EiVVector3d Angles = RotMat.eulerAngles(a0, a1, a2);
+	Out = FVector(Angles.x(), Angles.y(), Angles.z());
+}
+
+void UEiVBPLibrary::EiVMatrixFullPivLU(FEiVDynamicMatrix A, FEiVDynamicMatrix& LU, FEiVDynamicMatrix& P, FEiVDynamicMatrix& L, FEiVDynamicMatrix& U, FEiVDynamicMatrix& Q)
+{
+	EiVFullPivLU<EiVMatrixXd> LUD = A.Matrix.fullPivLu();
+	LU = FEiVDynamicMatrix(LUD.matrixLU());
+	P = FEiVDynamicMatrix(LUD.permutationP());
+	int Rows = A.Matrix.rows();
+	EiVMatrixXd LP = EiVMatrixXd::Identity(A.Matrix.rows(), A.Matrix.rows());
+	LP.block(0, 0, A.Matrix.rows(), A.Matrix.cols()).triangularView<EiVUpLoType::StrictlyLower>() = LUD.matrixLU();
+	L = FEiVDynamicMatrix(LP);
+	U = FEiVDynamicMatrix(LUD.matrixLU().triangularView<EiVUpLoType::Upper>());
+	Q = FEiVDynamicMatrix(LUD.permutationQ());
+}
+
+
+void UEiVBPLibrary::EiVMatrixHasNaN(FEiVDynamicMatrix A, bool& Out) {
+	Out = A.Matrix.hasNaN();
+}
+
+void UEiVBPLibrary::EiVMatrixIdentity(int Rows, int Cols, FEiVDynamicMatrix& I)
+{
+	I = FEiVDynamicMatrix(EiVMatrixXd::Identity(Rows,Cols));
+}
+
+void UEiVBPLibrary::EiVMatrixNonzeros(FEiVDynamicMatrix A, int& Nonzeros)
+{
+	Nonzeros = A.Matrix.nonZeros();
+}
+
+void UEiVBPLibrary::EiVMatrixNorm(FEiVDynamicMatrix A, double& Norm)
+{
+	Norm = A.Matrix.norm();
+}
+
+void UEiVBPLibrary::EiVMatrixNormalize(UPARAM(ref)FEiVDynamicMatrix& A)
+{
+	double Len = A.Matrix.norm();
+	A.Matrix = A.Matrix / Len;
+}
+
+// EiV Specific Functionality Below =======================================================
+
 void UEiVBPLibrary::EiVMakeDynamicComplexMatrix(TArray<FEiVComplexNumber> Array, int32 Rows, int32 Cols, FEiVDynamicComplexMatrix& Matrix)
 {
 	Matrix = FEiVDynamicComplexMatrix(Array, Rows, Cols);
@@ -402,9 +507,10 @@ void UEiVBPLibrary::EiVMakeDynamicMatrix(TArray<double> Array, int32 Rows, int32
 	Matrix = FEiVDynamicMatrix(Array, Rows, Cols);
 }
 
-void UEiVBPLibrary::EiVMakeDynamicVector(TArray<double> Array, int32 Cols, FEiVDynamicMatrix& Vector)
+void UEiVBPLibrary::EiVMakeDynamicVector(TArray<double> Array, int32 Rows, FEiVDynamicMatrix& Matrix, FEiVDynamicVector& Vector)
 {
-	Vector = FEiVDynamicMatrix(FEiVDynamicVector(Array,Cols).Vector);
+	Matrix = FEiVDynamicMatrix(FEiVDynamicVector(Array,Rows).Vector);
+	Vector = FEiVDynamicVector(Array, Rows);
 }
 
 void UEiVBPLibrary::EiVMakeRandomDynamicMatrix(int32 Rows, int32 Cols, FEiVDynamicMatrix& Matrix)
@@ -412,9 +518,10 @@ void UEiVBPLibrary::EiVMakeRandomDynamicMatrix(int32 Rows, int32 Cols, FEiVDynam
 	Matrix = FEiVDynamicMatrix(EiVMatrixXd::Random(Rows, Cols));
 }
 
-void UEiVBPLibrary::EiVMakeRandomDynamicVector(int32 Cols, FEiVDynamicMatrix& Vector)
+void UEiVBPLibrary::EiVMakeRandomDynamicVector(int32 Cols, FEiVDynamicMatrix& Matrix, FEiVDynamicVector& Vector)
 {
-	Vector = FEiVDynamicMatrix(FEiVDynamicVector(Cols).Vector);
+	Matrix = FEiVDynamicMatrix(FEiVDynamicVector(Cols).Vector);
+	Vector = FEiVDynamicVector(Cols);
 }
 
 void UEiVBPLibrary::EiVSetEigenThreads(int32 Threads)
@@ -463,9 +570,14 @@ void UEiVBPLibrary::EiVVectorToEiVVector(FVector Vector, FEiVVector EiVVector, F
 	OutEiVVector = FEiVVector(Vector);
 }
 
-void UEiVBPLibrary::EiVVectorToDynamicVector(FEiVVector Vector, FEiVDynamicMatrix& OutDynamicVector)
+void UEiVBPLibrary::EiVVectorToDynamicVector(FEiVVector Vector, FEiVDynamicMatrix& OutDynamicVectorMatrix, FEiVDynamicVector& OutDynamicVector)
 {
-	OutDynamicVector = FEiVDynamicMatrix(Vector.Vector);
+	TArray<double> Vals = TArray<double>();
+	for (int i = 0; i < Vector.Vector.rows(); i++) {
+		Vals.Add(Vector.Vector.coeff(i));
+	}
+	OutDynamicVector = FEiVDynamicVector(Vals,Vector.Vector.rows());
+	OutDynamicVectorMatrix = FEiVDynamicMatrix(Vector.Vector);
 }
 
 void UEiVBPLibrary::EiVVector4ToEiVVector(FVector4 Vector, FEiVVector EiVVector, FVector4& OutVector, FEiVVector& OutEiVVector)
