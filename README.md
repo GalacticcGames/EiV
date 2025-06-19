@@ -129,12 +129,12 @@ Eigen is distributed under the [MPL2 License](https://www.mozilla.org/en-US/MPL/
 
 ## Changelog:
 
-### {TBD} - EiV 1.0.1 Release:
+### 6/18/25 - EiV 1.0.1 Release:
  - TL;DR the 'What's in my Matrix?' update
  - Unreal Engine 5.6 Support!🎉
  - Matrix All Finite Blueprint Function
  - Matrix Complete Orthogonal Decomposition Blueprint Function
- - Matrix Is Diagonal BLueprint Function
+ - Matrix Is Diagonal Blueprint Function
  - Matrix Is Identity Blueprint Function
  - Matrix Is Lower Triangular Blueprint Function
  - Matrix Is Upper Triangular Blueprint Function
