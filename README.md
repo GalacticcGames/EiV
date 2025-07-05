@@ -1,4 +1,5 @@
-# EiV - Quick Linear Algebra and Matrix Access | Unreal Engine Plugin
+<h1 align="center">EiV - Quick Linear Algebra and Matrix Access | Unreal Engine Plugin</h1>
+
 <p align='center'>
 <a href="#"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/GalacticcGames/EiV?style=for-the-badge" /></a>
 &nbsp;
@@ -16,7 +17,7 @@
 <a href="https://x.com/GalacticcGames"><img alt="X (formerly Twitter)" src="https://img.shields.io/twitter/follow/GalacticcGames?style=for-the-badge&logo=x&logoColor=white" /></a>
 </p>
 
-<h2 align="center">Setup Tutorial</h2>
+<h2 align="center">Setup Tutorial Video For Blueprints & C++:</h2>
 
 <p align='center'>
 <a href="https://www.youtube.com/watch?v=HEuoAquiClk"><img alt="EiV Setup Tutorial" src="https://img.youtube.com/vi/HEuoAquiClk/0.jpg" /></a>
@@ -43,8 +44,6 @@ EiV is designed to be a *time-saver*⌚ when it comes to using linear algebra an
 > The Galaxy is a community that is for interacting with us and others that use our products and support us. *You can join even if you haven't
 purchased our products.* You can look at questions and written reviews from community members on a variety of topics relating to
 what we do. We hope to see you there!
-
-◿ A [setup tutorial](https://youtu.be/HEuoAquiClk) can be found on YouTube demonstrating how to get EiV working in an Unreal Engine project for Blueprints and C++
 
 ◿ Detailed documentation and the changelog is available below if you want to read more about EiV
 
